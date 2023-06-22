@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public class InstanceInformationService {
 
 	private static final String HOST_NAME = "HOSTNAME";
+	
 
 	private static final String DEFAULT_ENV_INSTANCE_GUID = "UNKNOWN";
 
