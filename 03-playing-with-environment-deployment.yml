@@ -9,29 +9,8 @@ strategy:
       operatingSystem: 'macos-latest'
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: $(operatingSystem)
 
-stages:
-- stage: Build
-  jobs:
-  - job: BuildJob
-    steps:
-    - bash: echo "Do the build"
-- stage: DevDeploy
-  jobs:
-  - deployment: DevDeployJob
-    environment: Dev
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - script: echo deploy to Dev
-- stage: QADeploy
-  jobs:
-  - deployment: QADeployJob
-    environment: QA
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - script: echo deploy to QA
+steps:
+  - script: echo running on $(operatingSystem)
+    displayName: 'Run a one-line script'
